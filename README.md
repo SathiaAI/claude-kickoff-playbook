@@ -60,3 +60,17 @@ Copy `skills/SKILL.md` to `/mnt/skills/user/claude-kickoff-playbook/SKILL.md` on
 - `security/` — immutable core principles, security model, failure registry
 - `skills/` — the installable Claude skill file
 - `docs/` — supporting documentation
+
+---
+
+## Installable Skills
+
+Four battle-tested skills extracted from 100+ AI working sessions are installable from this repo as a Claude Code / Cowork plugin:
+
+```
+/plugin marketplace add SathiaAI/claude-kickoff-playbook
+```
+
+**council** (multi-model decision validation) | **key-leak-triage** (leaked-credential response) | **decision-ledger** (append-only decision log) | **session-close** (end-of-session ritual)
+
+See [skills/README.md](skills/README.md) for the war stories behind each.
