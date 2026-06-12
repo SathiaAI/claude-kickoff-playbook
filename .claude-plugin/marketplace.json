@@ -7,7 +7,7 @@
     {
       "name": "agent-skills",
       "source": "./",
-      "description": "Battle-tested agent skills from 100+ AI working sessions on a production product: multi-model decision validation (council), credential leak triage (key-leak-triage), append-only decision logging (decision-ledger), and end-of-session close rituals (session-close)."
+      "description": "Battle-tested agent skills from 100+ AI working sessions on a production product: multi-model decision validation (council), credential leak triage (key-leak-triage), append-only decision logging (decision-ledger), end-of-session close rituals (session-close), dependency-PR triage (deps-pr-triage), merge-gate discipline (sequential-merge-discipline), pre-publish leak scrubbing (public-repo-scrub), and env-var runbook verification (env-var-verification)."
     }
   ]
 }
