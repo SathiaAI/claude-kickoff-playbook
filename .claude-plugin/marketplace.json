@@ -1,0 +1,13 @@
+{
+  "name": "claude-kickoff-playbook",
+  "owner": {
+    "name": "SathiaAI"
+  },
+  "plugins": [
+    {
+      "name": "agent-skills",
+      "source": "./",
+      "description": "Battle-tested agent skills from 100+ AI working sessions on a production product: multi-model decision validation (council), credential leak triage (key-leak-triage), append-only decision logging (decision-ledger), and end-of-session close rituals (session-close)."
+    }
+  ]
+}
