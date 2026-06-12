@@ -14,6 +14,10 @@ These are not theoretical patterns. Each skill was extracted from a real failure
 | [key-leak-triage](key-leak-triage/) | Triage before revoke. Find every consumer of a leaked key before pulling the plug, or risk turning a security incident into a production outage. | A local-only key rotated in 5 minutes instead of triggering a fire drill. The consumer-discovery step routinely contradicts what key labels claim. |
 | [decision-ledger](decision-ledger/) | Append-only decision log that governs a rotating AI workforce across sessions and models. 130+ locked decisions, zero silent reversals. | A conflict check caught a new proposal that contradicted a locked pricing constraint — the model simply hadn't seen the decision because it wasn't in the ledger read at boot. |
 | [session-close](session-close/) | End-of-session ritual: changelog, status snapshot, forbidden-string scan, audit trail check, optional session-starter handoff. | Three failure modes shaped this: archaeology (no snapshot), audit drift (auto-push racing manual commits), and a near-leak caught by the staged diff scan. |
+| [deps-pr-triage](deps-pr-triage/) | Drain the Dependabot/Renovate queue without merging blindly. AI reviewer version claims are near-certain false positives — verify against the registry API. Major bumps always go to a dedicated session. | An AI review gate flagged a dependency version as nonexistent. The registry confirmed the version was real. npm 10's `--omit=dev` also proved unreliable; the lockfile-based filter replaced it. |
+| [sequential-merge-discipline](sequential-merge-discipline/) | Land multiple PRs through an automated gate without silently losing content. Stacked simultaneous submissions can leave a PR merging into an orphaned base with the content gone. | Two PRs submitted simultaneously through an auto-merge gate: the second silently lost its content and had to be re-landed as a fresh PR. A separate incident: inferring the source branch from local state rather than the API caused a force-push. |
+| [public-repo-scrub](public-repo-scrub/) | Move content from private to public without leaking internals. Grep the entire tree, not just your files. After history rewrites, stale tags re-expose scrubbed commits. | An independent full-tree grep caught internal references in template files that drafting had missed. After a history rewrite to remove a secret, all existing tags still pointed at the pre-rewrite commits. |
+| [env-var-verification](env-var-verification/) | Write runbooks with variable names that match the deployed code. Documents are not ground truth — the code at the deployed SHA is. | A runbook quoted a variable name from a planning document. The name had been renamed in code before deploy. The misconfiguration caused ~30 minutes of silent failure in production identity resolution. |
 
 ---
 
@@ -37,6 +41,10 @@ Every skill here was extracted from a real failure. The source failures are docu
 - **key-leak-triage/README.md** — why triage-before-revoke turns key leaks into routine rotations instead of production fires.
 - **decision-ledger/README.md** — how a single markdown file governs a rotating cast of models across months.
 - **session-close/README.md** — how 100 sessions with 5 different LLMs stay resumable by any model, cold.
+- **deps-pr-triage/README.md** — why AI reviewer version claims are false positives and why npm 10 audit needs a lockfile filter.
+- **sequential-merge-discipline/README.md** — how stacked PRs through an auto-merge gate silently lose content.
+- **public-repo-scrub/README.md** — how stale tags after a history rewrite re-expose scrubbed commits.
+- **env-var-verification/README.md** — how a planning-doc variable name caused ~30 minutes of production identity failure.
 
 The generalizing principle: AI-assisted projects fail not because the models are wrong, but because the scaffolding around the models is missing. These skills are scaffolding.
 
