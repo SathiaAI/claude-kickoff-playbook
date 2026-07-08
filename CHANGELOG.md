@@ -55,3 +55,14 @@
 - No cryptographic signature on CORE_PRINCIPLES.md (planned for v1.1)
 - No rate limiting on improvement submissions (relies on GitHub PR review process)
 - Skill update is manual — no automated notification when a new version is available
+
+
+---
+
+## Version 1.2 - July 2026 (Two-layer instruction templates)
+
+**What is new:** Added `templates/PROJECT-INSTRUCTIONS.md` (v2 project instructions: graduated GREEN/YELLOW/RED decision rights, red-team quality bar, evidence-before-done rule, session-close handoff, chat-only fallback) and `templates/GLOBAL-CLAUDE.md` (global ~/.claude/CLAUDE.md: universal work loop, anti-hallucination evidence rules, code/research standards, model and token economics, security rules).
+
+**Key decision:** Three-layer separation of concerns - Project Instructions carry HOW we work; global CLAUDE.md carries universal standards; per-project CLAUDE.md carries project facts (architecture, gotchas, never-touch lists). Each layer stands alone; stricter rule wins on conflict.
+
+**Source:** Field review of live projects (sathia, ResidentLedger) - drift between duplicated CLAUDE.md copies and a near-empty global file motivated the layering.
